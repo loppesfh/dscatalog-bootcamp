@@ -13,5 +13,7 @@ public class Product implements Serializable{
 	private String imgUrl;
 	
 	private Category category;
+	
+	
 
 }
