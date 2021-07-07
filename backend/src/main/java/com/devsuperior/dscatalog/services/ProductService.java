@@ -32,19 +32,19 @@ public class ProductService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	@Transactional(readOnly = true)  //executa o metodo dentro de uma transação; readOnly -> não faz o "locking" no banco de dados;
-	public Page<ProductDTO> findAllPaged(Pageable pageable) {
-		Page<Product> list = repository.findAll(pageable);	
-		return list.map(x -> new ProductDTO(x));
-	}
+//	@Transactional(readOnly = true)  //executa o metodo dentro de uma transação; readOnly -> não faz o "locking" no banco de dados;
+//	public Page<ProductDTO> findAllPaged(Pageable pageable) {
+//		Page<Product> page = repository.findAll(pageable);	
+//		return page.map(x -> new ProductDTO(x));
+//	}
 	
 	@Transactional(readOnly = true)  //executa o metodo dentro de uma transação; readOnly -> não faz o "locking" no banco de dados;
-	public Page<ProductDTO> findAllPerCategory(Long categoryId, String name, Pageable pageable) {
+	public Page<ProductDTO> findAllPaged(Long categoryId, String name, Pageable pageable) {
 		List<Category> categories = categoryId == 0 ? null : Arrays.asList(categoryRepository.getOne(categoryId));
-		Page<Product> list = repository.findAllPerCategory(categories, name, pageable);	
-		return list.map(x -> new ProductDTO(x));
+		Page<Product> page = repository.find(categories, name, pageable);	
+		repository.findProductWithCategories(page.getContent());
+		return page.map(x -> new ProductDTO(x, x.getCategories()));
 	}
-
 
 	@Transactional(readOnly = true)
 	public ProductDTO findById(Long id) {
