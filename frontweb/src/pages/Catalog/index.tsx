@@ -1,6 +1,8 @@
 import { Product } from 'types/product';
 import ProductCard from 'components/ProductCard';
 
+import { Link } from 'react-router-dom';
+
 const Catalog = () => {
 
   const product: Product = {
@@ -26,22 +28,37 @@ const Catalog = () => {
         <div className="container my-4">
             <div className="row">
               <div className="col-sm-6 col-lg-4 col-xl-3">
-                <ProductCard product={product} />
-              </div>
-              <div className="col-sm-6 col-lg-4 col-xl-3">
+                <Link to="/products/1">
                   <ProductCard product={product} />
+                </Link>
               </div>
               <div className="col-sm-6 col-lg-4 col-xl-3">
+                <Link to="/products/1">
                   <ProductCard product={product} />
+                </Link>
               </div>
               <div className="col-sm-6 col-lg-4 col-xl-3">
+                <Link to="/products/1">
                   <ProductCard product={product} />
+                </Link>
               </div>
               <div className="col-sm-6 col-lg-4 col-xl-3">
-              <ProductCard product={product} />
+                <Link to="/products/1">
+                  <ProductCard product={product} />
+                </Link>
               </div>
-            </div>
+              <div className="col-sm-6 col-lg-4 col-xl-3">
+                <Link to="/products/1">
+                  <ProductCard product={product} />
+                </Link>
+              </div>
+              <div className="col-sm-6 col-lg-4 col-xl-3">
+                <Link to="/products/1">
+                  <ProductCard product={product} />
+                </Link>
+              </div>
           </div>
+        </div>
     );
 };
 
