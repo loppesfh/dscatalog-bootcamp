@@ -1,6 +1,6 @@
 import { Product } from 'types/product';
 import ProductCard from 'components/ProductCard';
-
+import Pagination from 'components/Pagination';
 import { Link } from 'react-router-dom';
 
 import './styles.css'
@@ -62,6 +62,10 @@ const Catalog = () => {
                 <Link to="/products/1">
                   <ProductCard product={product} />
                 </Link>
+              </div>
+
+              <div className="row">
+                <Pagination /> 
               </div>
           </div>
         </div>
