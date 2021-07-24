@@ -8,22 +8,23 @@ import './styles.css';
 import { useState } from 'react';
 import { SpringPage } from 'types/vendor/spring';
 import { useEffect } from 'react';
-import { AxiosParams } from 'types/vendor/axios';
 import { BASE_URL } from 'util/requests';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 const Catalog = () => {
   const [page, setPage] = useState<SpringPage<Product>>();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const params: AxiosParams = {
+    const params: AxiosRequestConfig = {
       method: 'GET',
-      url: `${BASE_URL}/products`,
+      baseURL: BASE_URL,
+      url: "/products",
       params: {
         page: 0,
         size: 12,
       },
+
     };
 
     setIsLoading(true);
